@@ -6,7 +6,7 @@ package Activity01;
  * <code>Card</code> represents a playing card.
  */
 public class Card {
-
+    
     /**
      * String value that holds the suit of the card
      */
@@ -22,8 +22,7 @@ public class Card {
      */
     private int pointValue;
 
-
-   /**
+    /**
      * Creates a new <code>Card</code> instance.
      *
      * @param cardRank  a <code>String</code> value
@@ -34,15 +33,18 @@ public class Card {
      *                  containing the point value of the card
      */
     public Card(String cardRank, String cardSuit, int cardPointValue) {
+        rank = cardRank;
+		suit = cardSuit;
+		pointValue = cardPointValue;
 
     }
-
 
     /**
      * Accesses this <code>Card's</code> suit.
      * @return this <code>Card's</code> suit.
      */
     public String suit() {
+        return suit;
 
     }
 
@@ -51,14 +53,16 @@ public class Card {
      * @return this <code>Card's</code> rank.
      */
     public String rank() {
+        return rank;
 
     }
 
-   /**
+    /**
      * Accesses this <code>Card's</code> point value.
      * @return this <code>Card's</code> point value.
      */
     public int pointValue() {
+        return pointValue;
 
     }
 
@@ -69,8 +73,11 @@ public class Card {
      *         false otherwise.
      */
     public boolean matches(Card otherCard) {
-
+        return otherCard.suit().equals(this.suit())
+			&& otherCard.rank().equals(this.rank())
+			&& otherCard.pointValue() == this.pointValue();
     }
+    
 
     /**
      * Converts the rank, suit, and point value into a string in the format
@@ -84,6 +91,7 @@ public class Card {
      */
     @Override
     public String toString() {
+        return rank + " of " + suit + " (point value = " + pointValue + ")";
 
     }
 }
