@@ -69,6 +69,10 @@ public class CardTest
         Activity01.Card card3 = new Activity01.Card("4", "clubs", 4);
         Activity01.Card card4 = new Activity01.Card("jack", "diamonds", 11);
         assertEquals(false, card3.matches(card4));
+        
+        Activity01.Card card5 = new Activity01.Card("6", "hearts", 6);
+        Activity01.Card card6 = new Activity01.Card("6", "hearts", 6);
+        assertEquals(true, card3.matches(card4));
     }
 }
 
