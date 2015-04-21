@@ -22,7 +22,6 @@ public class Deck {
      */
     private int size;
 
-
     /**
      * Creates a new <code>Deck</code> instance.<BR>
      * It pairs each element of ranks with each element of suits,
@@ -32,18 +31,27 @@ public class Deck {
      * @param values is an array containing all of the card point values.
      */
     public Deck(String[] ranks, String[] suits, int[] values) {
-        ranks = new String[] {"Ace", "King", "Queen", "Jack", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1"};
-        suits = new String [] {"Clubs", "Diamonds", "Hearts", "Spades"};
-        values = new int[] {1,2,3,4,5,6,7,8,9,10,11,12};
+        cards = new ArrayList<Card>();
+		for (int j = 0; j < ranks.length; j++) {
+			for (String suitString : suits) {
+				cards.add(new Card(ranks[j], suitString, values[j]));
+			}
+		}
+		size = cards.size();
+		shuffle();
     }
-
 
     /**
      * Determines if this deck is empty (no undealt cards).
      * @return true if this deck is empty, false otherwise.
      */
     public boolean isEmpty() {
-        if
+        if (size == 0 ){
+            return true;
+        } 
+        else {
+            return false;
+        }
     }
 
     /**
@@ -51,7 +59,7 @@ public class Deck {
      * @return the number of undealt cards in this deck.
      */
     public int size() {
-        
+        return size;
     }
 
     /**
@@ -68,7 +76,12 @@ public class Deck {
      *         previously dealt.
      */
     public Card deal() {
-        /* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+        if (isEmpty()) {
+            return null;
+        }
+        size--;
+        Card c = cards.get(size);
+        return c;
     }
 
     /**
